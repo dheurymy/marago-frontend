@@ -37,6 +37,7 @@
     }
 
     & .cadastro-usuario-form {
+        width: 300px;
 
         display: flex;
         flex-direction: column;
@@ -59,16 +60,6 @@
             border-radius: 4px;
 
             font-family: var(--font-family-poppins);
-        }
-
-        & .input-group {
-            width: 300px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-
-
         }
 
         & button {
