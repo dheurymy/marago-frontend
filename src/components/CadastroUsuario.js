@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import '../assets/styles/cadastro-usuario.css';
 import Logo from '../assets/images/logo-marago-branco.jpg';
+import GoogleLogo from '../assets/images/google-logo.svg';
 
 const CadastroUsuario = () => {
     const [listaDePaises, setListaDePaises] = useState([]);
@@ -234,6 +235,19 @@ const CadastroUsuario = () => {
                 <button type='submit' disabled={isLoading}>
                     {isLoading ? 'Cadastrando...' : 'Cadastrar'}
                 </button>
+                <div className="login-social">
+                    <p>Ou entre com:</p>
+                    <a href="https://marago-backend.vercel.app/auth/google">
+                        <button type="button" className="google-button">
+                            <img src={GoogleLogo} alt="Google logo"  />
+                            Entrar com Google
+                        </button>
+                    </a>
+                </div>
+                <p>Ao se cadastrar, você concorda com nossos Termos de Serviço e Política de Privacidade.</p>
+                <p className='cadastro-usuario-footer'>
+                    Já tem uma conta? <a href='/login'>Faça login</a>
+                </p>
 
 
             </form>

@@ -1,4 +1,4 @@
-.cadastro-usuario-container {
+.login-usuario-container {
     width: 350px;
     height: auto;
 
@@ -18,7 +18,7 @@
 
 }
 
-.cadastro-usuario-header {
+.login-usuario-header {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@
     }
 }
 
-.cadastro-usuario-form {
+.login-usuario-form {
     width: 300px;
 
     display: flex;
