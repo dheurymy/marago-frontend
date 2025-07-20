@@ -8,6 +8,15 @@
   background-color: var(--corBrancoFosco);
 }
 
+.card-local {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: background-color 0.2s ease;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .card-local-imagem {
   width: 100%;
   height: auto;
@@ -47,4 +56,32 @@
   text-align: center;
   font-size: 12px;
   
+}
+
+.card-deslizavel {
+  position: relative;
+}
+
+.swipe-label {
+  position: absolute;
+  top: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  user-select: none;
+}
+
+.like-label {
+  left: 20px;
+  color: var(--corAzulRoyal);
+  border: 2px solid var(--corAzulRoyal);
+}
+
+.pass-label {
+  right: 20px;
+  color: var(--corVermelho);
+  border: 2px solid var(--corVermelho);
 }

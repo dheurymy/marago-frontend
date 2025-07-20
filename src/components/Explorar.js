@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CardLocal from './CardLocal';
+import CardDeslizavel from './CardDeslizavel';
 import '../assets/styles/explorar.css';
 import Logo from '../assets/images/logo-marago-branco.jpg';
 import Coracao from '../assets/images/coracao-azul.svg';
@@ -43,15 +43,12 @@ const Explorar = () => {
   useEffect(() => {
     if (indexAtual >= locais.length && locais.length > 0) {
       const todosTipos = locaisCurtidos
-        .flatMap(local => local.tipo) // junta todos os tipos
-        .filter(Boolean);             // remove nulos/vazios
+        .flatMap(local => local.tipo)
+        .filter(Boolean);
 
       const tiposUnicos = [...new Set(todosTipos)];
-      console.log('Tipos únicos selecionados:', tiposUnicos);
-
       const usuario = JSON.parse(localStorage.getItem('usuario'));
       const idUsuario = usuario?._id;
-      console.log('ID do usuário:', idUsuario);
 
       if (idUsuario && tiposUnicos.length > 0) {
         fetch(`https://marago-backend.vercel.app/usuarios/${idUsuario}/preferencias`, {
@@ -80,21 +77,26 @@ const Explorar = () => {
     console.log('⛔ Ignorado:', locais[indexAtual]);
     setIndexAtual(prev => prev + 1);
   };
+
   return (
     <div className="explorar-container">
-
-
       <div className='explorar-header'>
         <img src={Logo} alt='Logo Marago' />
-        <h1>Olá, {primeiroNome}, bem vindo ao MaraGO! Conta pra gente com que locais você dá um match.</h1>
+        <h1>Olá, {primeiroNome}! Bem-vindo ao MaraGO. Conta pra gente com que locais você dá um match.</h1>
       </div>
-
 
       {carregando ? (
         <p>🔄 Carregando destinos...</p>
       ) : locais.length > 0 && indexAtual < locais.length ? (
         <>
-          <CardLocal local={locais[indexAtual]} />
+          <CardDeslizavel
+            key={indexAtual}
+            local={locais[indexAtual]}
+            onSwipe={(direcao) => {
+              if (direcao === 'right') handleLike();
+              else if (direcao === 'left') handlePassar();
+            }}
+          />
 
           <div className="explorar-botoes">
             <button className="botao-passar" onClick={handlePassar}>
@@ -104,6 +106,7 @@ const Explorar = () => {
               <img src={Coracao} alt="Curtir" />
             </button>
           </div>
+
           <div className='explorar-pular'>
             <button className="botao-pular" onClick={() => navigate('/mapa')}>
               <img src={Pular} alt="Pular" />
