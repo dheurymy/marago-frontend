@@ -1,0 +1,19 @@
+.mapa-locais-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100dvw;
+  height: 100dvh;
+}
+
+
+.leaflet-container {
+  border: 1px solid var(--corAzulRoyal);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  height: 100vh;
+  z-index: 0;
+}

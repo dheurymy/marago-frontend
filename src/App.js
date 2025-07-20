@@ -6,6 +6,8 @@ import LoginUsuario from './components/LoginUsuario';
 import Home from './components/Home';
 import Explorar from './components/Explorar';
 import RotaProtegida from './components/RotaProtegida';
+import MapaLocais from './components/MapaLocais';
+import Header from './components/Header';
 
 
 function App() {
@@ -19,11 +21,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cadastro" element={<CadastroUsuario />} />
             <Route path="/login" element={<LoginUsuario />} />
+            <Route path="/header" element={<Header />} />
            
 
             {/* Rotas protegidas (apenas usuários logados podem acessar) */}
 
             <Route path="/explorar" element={<RotaProtegida><Explorar /></RotaProtegida>} />
+            <Route path="/mapa" element={<RotaProtegida><MapaLocais /></RotaProtegida>} />
             
             
           </Routes>

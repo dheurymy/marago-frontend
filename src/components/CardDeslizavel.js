@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import '../assets/styles/card-local.css';
 

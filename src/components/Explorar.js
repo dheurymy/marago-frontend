@@ -62,7 +62,8 @@ const Explorar = () => {
           })
           .catch(err => console.error('⚠️ Erro ao enviar preferências:', err));
       }
-
+      console.log('Locais curtidos:', locaisCurtidos);
+      localStorage.setItem('locaisCurtidos', JSON.stringify(locaisCurtidos));
       navigate('/mapa', { state: { locais: locaisCurtidos } });
     }
   }, [indexAtual, locais.length, locaisCurtidos, navigate]);
