@@ -85,3 +85,31 @@
   color: var(--corVermelho);
   border: 2px solid var(--corVermelho);
 }
+
+.card-deslizavel {
+  position: relative;
+}
+
+.swipe-label {
+  position: absolute;
+  top: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  user-select: none;
+}
+
+.like-label {
+  left: 20px;
+  color: #2c8be8;
+  border: 2px solid #2c8be8;
+}
+
+.pass-label {
+  right: 20px;
+  color: #d00000;
+  border: 2px solid #d00000;
+}
