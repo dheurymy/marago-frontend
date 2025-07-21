@@ -1,15 +1,13 @@
-// CardMapa.js
 import '../assets/styles/card-mapa.css';
 
-const CardMapa = ({ local, onFechar }) => {
+const CardMapa = ({ local, distanciaKm, urlGoogleMaps, onFechar }) => {
   if (!local) return null;
 
   return (
     <div className="card-mapa">
       <button className="fechar-card" onClick={onFechar}>✖</button>
 
-      {/* Imagem do local */}
-      {local.imagens && local.imagens.length > 0 && (
+      {local.imagens?.[0] && (
         <img
           src={local.imagens[0]}
           alt={local.nome}
@@ -22,7 +20,23 @@ const CardMapa = ({ local, onFechar }) => {
         <small>
           {local.cidade}, {local.estado}, {local.pais || 'Brasil'}
         </small>
+
+        {distanciaKm && (
+          <p className="distancia-local">🧭 {distanciaKm} km de você</p>
+        )}
+
         <p>{local.descricao}</p>
+
+        {urlGoogleMaps && (
+          <a
+            href={urlGoogleMaps}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="botao-maps"
+          >
+            📍 Abrir no Google Maps
+          </a>
+        )}
       </div>
     </div>
   );
