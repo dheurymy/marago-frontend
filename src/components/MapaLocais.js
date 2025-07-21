@@ -20,6 +20,8 @@ import Header from './Header';
 import CardMapa from './CardMapa';
 import { buscarRotaOSRM } from '../utils/buscarRotaOSRM';
 
+
+
 const AjustarViewParaLocais = ({ locais, posicaoUsuario }) => {
   const map = useMap();
 
@@ -76,6 +78,16 @@ const MapaLocais = () => {
   const [localSelecionado, setLocalSelecionado] = useState(null);
   const [locais, setLocais] = useState([]);
   const { state } = useLocation();
+
+  const [primeiroNome, setPrimeiroNome] = useState('');
+  
+    useEffect(() => {
+      const dados = JSON.parse(localStorage.getItem('usuario'));
+      if (dados?.nome) {
+        const nomeSeparado = dados.nome.split(' ')[0];
+        setPrimeiroNome(nomeSeparado);
+      }
+    }, []);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -159,6 +171,10 @@ const MapaLocais = () => {
   return (
     <div className="mapa-locais-container">
       <Header />
+      <div className='mapa-locais-header'>
+        
+        <h1>Opa, {primeiroNome}! Esses são os principais que deram match com você. Que tal explorar as possibilidades de rolê? Muita coisa boa pra fazer...</h1>
+      </div>
       <MapContainer
         center={[posicaoUsuario?.lat || 0, posicaoUsuario?.lng || 0]}
         zoom={14}
