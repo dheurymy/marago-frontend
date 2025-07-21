@@ -3,7 +3,8 @@ import {
   MapContainer,
   TileLayer,
   Marker,
-  Popup, useMap
+  Popup,
+  useMap
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -15,6 +16,7 @@ import { useLocation } from 'react-router-dom';
 import '../assets/styles/mapa-locais.css';
 
 import Header from './Header';
+import CardMapa from './CardMapa';
 
 const AjustarViewParaLocais = ({ locais, posicaoUsuario }) => {
   const map = useMap();
@@ -24,7 +26,7 @@ const AjustarViewParaLocais = ({ locais, posicaoUsuario }) => {
       .filter(l => l.coordenadas?.latitude && l.coordenadas?.longitude)
       .map(l => [l.coordenadas.latitude, l.coordenadas.longitude]);
 
-    if (posicaoUsuario) {
+    if (posicaoUsuario?.lat && posicaoUsuario?.lng) {
       pontos.push([posicaoUsuario.lat, posicaoUsuario.lng]);
     }
 
@@ -47,27 +49,27 @@ const defaultIcon = L.icon({
 
 const heartMarkerIcon = L.icon({
   iconUrl: coracao,
-  iconSize: [20, 20],       // ajuste conforme o tamanho do SVG
-  iconAnchor: [16, 32],     // ponto onde o ícone encosta no mapa
-  popupAnchor: [0, -32],    // onde o popup aparece em relação ao ícone
+  iconSize: [24, 24],
+  iconAnchor: [12, 24],
+  popupAnchor: [0, -24],
 });
 
 const MapaLocais = () => {
   const [posicaoUsuario, setPosicaoUsuario] = useState(null);
   const [maisProximo, setMaisProximo] = useState(null);
+  const [localSelecionado, setLocalSelecionado] = useState(null);
   const [locais, setLocais] = useState([]);
   const { state } = useLocation();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        console.log('📍 Posição do usuário:', pos.coords);
         setPosicaoUsuario({
           lat: pos.coords.latitude,
           lng: pos.coords.longitude,
         });
       },
-      (err) => console.error('⚠️ Erro ao obter localização:', err),
+      (err) => console.error('Erro ao obter localização:', err),
       { enableHighAccuracy: true }
     );
   }, []);
@@ -78,13 +80,8 @@ const MapaLocais = () => {
     } else {
       fetch('https://marago-backend.vercel.app/pontos/?limit=10')
         .then((res) => res.json())
-        .then((data) => {
-          console.log('📦 Locais carregados do banco:', data);
-          setLocais(data);
-        })
-        .catch((err) => {
-          console.error('❌ Erro ao buscar locais do banco:', err);
-        });
+        .then((data) => setLocais(data))
+        .catch((err) => console.error('Erro ao buscar locais do banco:', err));
     }
   }, [state]);
 
@@ -150,10 +147,7 @@ const MapaLocais = () => {
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <AjustarViewParaLocais locais={locais} posicaoUsuario={posicaoUsuario} />
 
-        <Marker
-          position={[posicaoUsuario.lat, posicaoUsuario.lng]}
-          icon={defaultIcon}
-        >
+        <Marker position={[posicaoUsuario.lat, posicaoUsuario.lng]} icon={defaultIcon}>
           <Popup>📍 Você está aqui</Popup>
         </Marker>
 
@@ -165,7 +159,12 @@ const MapaLocais = () => {
             const destaque = maisProximo?._id === local._id;
 
             return (
-              <Marker position={[lat, lng]} icon={heartMarkerIcon}>
+              <Marker
+                key={i}
+                position={[lat, lng]}
+                icon={heartMarkerIcon}
+                eventHandlers={{ click: () => setLocalSelecionado(local) }}
+              >
                 <Popup>
                   <strong>{local.nome}</strong><br />
                   {destaque
@@ -176,6 +175,12 @@ const MapaLocais = () => {
             );
           })}
       </MapContainer>
+
+      {/* Card flutuante modular */}
+      <CardMapa
+        local={localSelecionado}
+        onFechar={() => setLocalSelecionado(null)}
+      />
     </div>
   );
 };
