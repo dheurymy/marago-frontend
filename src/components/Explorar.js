@@ -28,8 +28,33 @@ const Explorar = () => {
       try {
         const res = await fetch('https://marago-backend.vercel.app/pontos/filtro');
         const json = await res.json();
-        setLocais(json);
-        console.log('Locais encontrados:', json);
+
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        const preferencias = usuario?.preferencias_turisticas || [];
+
+        const embaralhar = (arr) => arr.sort(() => Math.random() - 0.5);
+
+        let listaFinal = [];
+
+        if (json.length > 0 && preferencias.length > 0) {
+          const locaisPrioritarios = json.filter((local) =>
+            local.tipo?.some((tipo) => preferencias.includes(tipo))
+          );
+
+          const locaisRestantes = json.filter(
+            (local) => !locaisPrioritarios.includes(local)
+          );
+
+          listaFinal = [
+            ...embaralhar(locaisPrioritarios),
+            ...embaralhar(locaisRestantes)
+          ];
+        } else {
+          listaFinal = embaralhar(json);
+        }
+
+        setLocais(listaFinal);
+        console.log('Locais processados:', listaFinal);
       } catch (err) {
         console.error('Erro ao buscar locais:', err);
       } finally {
@@ -62,6 +87,7 @@ const Explorar = () => {
           })
           .catch(err => console.error('⚠️ Erro ao enviar preferências:', err));
       }
+
       console.log('Locais curtidos:', locaisCurtidos);
       localStorage.setItem('locaisCurtidos', JSON.stringify(locaisCurtidos));
       navigate('/mapa', { state: { locais: locaisCurtidos } });
@@ -86,13 +112,14 @@ const Explorar = () => {
         <h1>Olá, {primeiroNome}! Bem-vindo ao MaraGO. Conta pra gente com que locais você dá um match.</h1>
       </div>
 
-      {carregando ? (
+      {carregando || locais.length === 0 ? (
         <p>🔄 Carregando destinos...</p>
-      ) : locais.length > 0 && indexAtual < locais.length ? (
+      ) : indexAtual < locais.length ? (
         <>
           <CardDeslizavel
             key={indexAtual}
             local={locais[indexAtual]}
+            animarInicio={indexAtual === 0}
             onSwipe={(direcao) => {
               if (direcao === 'right') handleLike();
               else if (direcao === 'left') handlePassar();

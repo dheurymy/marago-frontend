@@ -1,10 +1,24 @@
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import '../assets/styles/card-local.css';
+import { useEffect } from 'react';
 
-const CardDeslizavel = ({ local, onSwipe }) => {
+const CardDeslizavel = ({ local, onSwipe, animarInicio }) => {
   const x = useMotionValue(0);
 
-  // Estilos visuais e animações
+  useEffect(() => {
+    if (!animarInicio) return;
+    // Animação inicial ao montar o componente
+    const animacaoInicial = async () => {
+      await animate(x, -100, { duration: 0.5 });
+      await animate(x, 30, { duration: 0.4 });
+      await animate(x, -30, { duration: 0.4 });
+      await animate(x, 100, { duration: 0.5 });
+      await animate(x, 0, { duration: 0.5 });
+    };
+    animacaoInicial();
+  }, [x, animarInicio]);
+
+
   const backgroundColor = useTransform(x, [-100, 0, 100], ['#ffdddd', '#ffffff', '#ddeeff']);
   const rotate = useTransform(x, [-100, 100], [-15, 15]);
   const likeOpacity = useTransform(x, [50, 150], [0, 1]);

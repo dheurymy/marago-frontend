@@ -173,7 +173,7 @@ const MapaLocais = () => {
       <Header />
       <div className='mapa-locais-header'>
         
-        <h1>Opa, {primeiroNome}! Esses são os principais que deram match com você. Que tal explorar as possibilidades de rolê? Muita coisa boa pra fazer...</h1>
+        <h1>Opa, {primeiroNome}! Esses são os principais rolês que deram match com você. Que tal explorar as possibilidades de rolê? Tem muita coisa boa pra fazer...</h1>
       </div>
       <MapContainer
         center={[posicaoUsuario?.lat || 0, posicaoUsuario?.lng || 0]}
@@ -208,12 +208,7 @@ const MapaLocais = () => {
                   }
                 }}
               >
-                <Popup>
-                  <strong>{local.nome}</strong><br />
-                  {destaque
-                    ? '🌟 Mais próximo de você!'
-                    : `${local.cidade}, ${local.estado}`}
-                </Popup>
+                
               </Marker>
             );
           })}

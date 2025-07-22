@@ -8,6 +8,7 @@ import Explorar from './components/Explorar';
 import RotaProtegida from './components/RotaProtegida';
 import MapaLocais from './components/MapaLocais';
 import Header from './components/Header';
+import PaginaPerfil from './components/PaginaPerfil';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 
             <Route path="/explorar" element={<RotaProtegida><Explorar /></RotaProtegida>} />
             <Route path="/mapa" element={<RotaProtegida><MapaLocais /></RotaProtegida>} />
+            <Route path="/perfil" element={<RotaProtegida><PaginaPerfil /></RotaProtegida>} />
             
             
           </Routes>

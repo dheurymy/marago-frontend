@@ -32,6 +32,7 @@ const Header = () => {
         <div className='menu-itens'>
           <ul>
             <li><a href="/">🏠 Início</a></li>
+            <li><a href="/perfil">👤 Perfil</a></li>
             <li><a href="/explorar">🧭 Explorar</a></li>
             <li><a href="/favoritos">💙 Favoritos</a></li>
             <li><a href="/mapa">📍 Mapa</a></li>

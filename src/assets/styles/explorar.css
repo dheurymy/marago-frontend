@@ -134,3 +134,16 @@
     margin-right: 5px;
   }
 }
+
+.card-deslizavel.animacao-inicial {
+  animation: deslizamentoSutil 0.7s ease-out 0.2s 1;
+}
+
+@keyframes deslizamentoSutil {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(60px); }
+  40%  { transform: translateX(0px); }
+  60%  { transform: translateX(-60px); }
+  80%  { transform: translateX(0px); }
+  100% { transform: translateX(0); }
+}
