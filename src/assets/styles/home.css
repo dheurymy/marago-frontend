@@ -1,0 +1,276 @@
+.landing-page {
+    width: 95dvw;
+    height: auto;
+    max-width: 500px;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: var(--corBranco);
+    text-align: center;
+
+    border: 1px solid var(--corAzulRoyal);
+    border-radius: 8px;
+    padding: 10px;
+    padding-top: 20px;
+
+
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 90dvw;
+    max-width: 500px;
+
+
+
+
+}
+
+.header-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+
+
+}
+
+
+
+/* From Uiverse.io by JulanDeAlb */
+.hamburger {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.hamburger input {
+    display: none;
+}
+
+.hamburger svg {
+    /* The size of the SVG defines the overall size */
+    height: 60px;
+    width: 60px;
+    /* Define the transition for transforming the SVG */
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+    fill: none;
+    stroke: var(--corAzul);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    /* Define the transition for transforming the Stroke */
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+    stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked+svg {
+    transform: rotate(-45deg);
+}
+
+.hamburger input:checked+svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 60px;
+
+    & .content-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 80%;
+        height: 60px;
+
+        & img {
+            width: 100px;
+            height: 100px;
+            
+        }
+
+    }
+
+
+    & button {
+        width: 60px;
+        height: 28px;
+        background-color: var(--corAzulRoyal);
+        color: var(--corBranco);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        font-family: var(--font-family-fredoka);
+        font-size: 16px;
+
+        transition: background-color 0.3s ease;
+
+
+
+    }
+}
+
+
+
+.menu {
+    position: absolute;
+    top: 150px;
+    left: 3dvw;
+
+    background-color: var(--corBrancoFosco);
+    padding: 1rem;
+    width: 94dvw;
+    height: 50dvh;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu li {
+    margin-bottom: 0.8rem;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: var(--corAzul, #2c8be8);
+    font-weight: 500;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+
+    width: 95dvw;
+    max-width: 500px;
+
+    min-height: 400px;
+
+    & h1 {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+
+        margin-top: 1em;
+        margin-bottom: 1em;
+        
+
+
+
+        font-family: var(--font-family-fredoka);
+        font-size: 3.8rem;
+        font-weight: 800;
+        color: var(--corAzulRoyal);
+
+        & .linha1 {
+            font-size: 3.2rem;
+            height: 60px;
+
+        }
+
+        & .linha2 {
+            font-size: 3.2rem;
+            height: 63px;
+
+            & strong {
+                color: var(--corAmarelo);
+                height: 10px;
+
+            }
+        }
+
+
+        & .linha3 {
+            font-size: 5rem;
+            height: 70px;
+        }
+    }
+
+    & p {
+
+        width: 90%;
+        height: auto;
+        min-height: 100px;
+        font-family: var(--font-family-poppins);
+        font-size: 1rem;
+        color: var(--corAmarelo);
+        text-align: justify;
+
+        line-height: 1.15;
+
+        
+
+        font-weight: 450;
+
+        padding-bottom: 1em;
+        
+    }
+
+    & button {
+        width: 45%;
+        height: 40px;
+        background-color: var(--corAzulRoyal);
+        color: var(--corBranco);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        font-family: var(--font-family-fredoka);
+        font-size: 20px;
+
+        transition: background-color 0.3s ease;
+
+
+
+    }
+}
