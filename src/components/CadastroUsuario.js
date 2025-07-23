@@ -119,7 +119,8 @@ const CadastroUsuario = () => {
                     genero: ''
                 });
             } else {
-                alert(`Erro: ${data.error}`);
+                alert(`Erro: ${data.erro}`);
+                
             }
         } catch (error) {
             console.error('Erro ao cadastrar usuário:', error);
