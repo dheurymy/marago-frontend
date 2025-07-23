@@ -4,6 +4,7 @@
     max-width: 500px;
     padding-bottom: 1em;
     margin-bottom: 1em;
+    gap: 1em;
 
     display: flex;
     flex-direction: column;
@@ -116,7 +117,7 @@
         & img {
             width: 100px;
             height: 100px;
-            
+
         }
 
     }
@@ -155,7 +156,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     z-index: 100;
-    
+
 }
 
 .menu ul {
@@ -203,7 +204,7 @@
 
         margin-top: 1em;
         margin-bottom: 1em;
-        
+
 
 
 
@@ -248,12 +249,12 @@
 
         line-height: 1.15;
 
-        
+
 
         font-weight: 450;
 
         padding-bottom: 1em;
-        
+
     }
 
     & button {
@@ -272,5 +273,79 @@
 
 
 
+    }
+}
+
+.cards-funcionalidades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 90dvw;
+    max-width: 460px;
+
+
+    gap: 1em;
+
+    & h2 {
+        font-family: var(--font-family-fredoka);
+        font-size: 1rem;
+        color: var(--corAmarelo);
+        
+    }
+
+    & .card {
+
+
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--corAzulRoyal);
+        border-radius: 8px;
+
+        & .card-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: left;
+
+            width: 100%;
+            height: auto;
+
+            padding-left: 1em;
+            padding-top: 1em;
+
+            gap: 1em;
+
+
+            & img {
+                width: 30px;
+                height: 30px;
+                margin-bottom: 0.5em;
+            }
+
+            & h2 {
+                font-family: var(--font-family-fredoka);
+                font-size: 1.5rem;
+                color: var(--corAzulRoyal);
+                margin-bottom: 0.5em;
+            }
+
+
+        }
+
+        & .card-content {
+            width: 100%;
+            height: auto;
+            padding: 1em;
+
+            font-family: var(--font-family-poppins);
+            font-size: 0.8em;
+            color: var(--corAmarelo);
+            text-align: justify;
+
+            line-height: 1.15;
+
+        }
     }
 }
