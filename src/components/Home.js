@@ -6,6 +6,7 @@ import ExplorarIcon from '../assets/images/explorar-icon.svg';
 import MapaIcon from '../assets/images/mapa-icon.svg';
 import RotaIcon from '../assets/images/rota-icon.svg';
 import BadgeIcon from '../assets/images/badge-icon.svg';
+import CodigoMALogo from '../assets/images/codigoma-logo.svg';
 import { useState } from 'react';
 
 const LandingPage = () => {
@@ -94,6 +95,13 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+      <footer className='footer'>
+        <p>© 2025 MaraGO. Todos os direitos reservados.</p>
+        <p>Desenvolvido por <a href="https://github.com/dheurymy">
+        <img src={CodigoMALogo} alt="CódigoMA Logo" className='codigoma-logo' />
+        </a></p>
+      </footer>
     </div>
   );
 };
