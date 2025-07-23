@@ -244,7 +244,7 @@
         min-height: 100px;
         font-family: var(--font-family-poppins);
         font-size: 1rem;
-        color: var(--corAmarelo);
+        color: var(--corPreto);
         text-align: justify;
 
         line-height: 1.15;
@@ -291,7 +291,7 @@
     & h2 {
         font-family: var(--font-family-fredoka);
         font-size: 1rem;
-        color: var(--corAmarelo);
+        color: var(--corPreto);
         
     }
 
@@ -341,7 +341,7 @@
 
             font-family: var(--font-family-poppins);
             font-size: 0.8em;
-            color: var(--corAmarelo);
+            color: var(--corPreto);
             text-align: justify;
 
             line-height: 1.15;
@@ -365,7 +365,7 @@
 
         font-family: var(--font-family-poppins);
         font-size: 0.8rem;
-        color: var(--corAmarelo);
+        color: var(--corPreto);
 
         & p {
             display: flex;

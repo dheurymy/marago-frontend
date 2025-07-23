@@ -98,7 +98,7 @@ const LandingPage = () => {
 
       <footer className='footer'>
         <p>© 2025 MaraGO. Todos os direitos reservados.</p>
-        <p>Desenvolvido por <a href="https://github.com/dheurymy">
+        <p>Desenvolvido por <a href="/">
         <img src={CodigoMALogo} alt="CódigoMA Logo" className='codigoma-logo' />
         </a></p>
       </footer>

@@ -38,7 +38,7 @@
     & h1 {
         font-family: var(--font-family-fredoka);
         font-size: 18px;
-        color: var(--corAmarelo);
+        color: var(--corPreto);
         text-align: center;
     }
 }
