@@ -276,6 +276,32 @@
     }
 }
 
+.botao-piscar {
+  background-color: #007BFF;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  animation: piscar 1.5s infinite;
+  box-shadow: 0 0 10px #007BFF;
+  transition: transform 0.3s ease;
+}
+
+@keyframes piscar {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px #007BFF;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 20px #66B2FF;
+    transform: scale(1.05);
+  }
+}
+
 .cards-funcionalidades {
     display: flex;
     flex-direction: column;

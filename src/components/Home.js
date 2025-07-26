@@ -3,7 +3,7 @@
 import '../assets/styles/home.css';
 import Logo from '../assets/images/logo-marago-branco.jpg';
 import ExplorarIcon from '../assets/images/explorar-icon.svg';
-import MapaIcon from '../assets/images/mapa-icon.svg';
+
 import RotaIcon from '../assets/images/rota-icon.svg';
 import BadgeIcon from '../assets/images/badge-icon.svg';
 import CodigoMALogo from '../assets/images/codigoma-logo.svg';
@@ -68,7 +68,7 @@ const LandingPage = () => {
           <CardsFuncionalidade />
           <div className='card-content'>
             <p>Descubra novos rolês com a facilidade de um deslizar.</p>
-            <button onClick={() => window.location.href = '/cadastro'}>Experimentar</button>
+            <button className='botao-piscar' onClick={() => window.location.href = '/cadastro'}>Experimentar</button>
           </div>
         </div>
         
