@@ -90,6 +90,7 @@ const LandingPage = () => {
 
           <div className='card-content'>
             <p>Ganhe medalhas por explorar, conhecer novos lugares e completar desafios. </p>
+            <button className='botao-piscar' onClick={() => window.location.href = '/cadastro'}>Começe Agora</button>
           </div>
         </div>
       </section>
