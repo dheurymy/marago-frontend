@@ -420,7 +420,7 @@
     margin-top: 1em;
 
     font-family: var(--font-family-poppins);
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     color: var(--corPreto);
 
     & p {
@@ -443,8 +443,8 @@
             justify-content: center;
 
             & img {
-                width: 60px;
-                height: 20px;
+                width: auto;
+                height: 36px;
 
             }
         }
