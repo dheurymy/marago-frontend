@@ -14,6 +14,7 @@ const Explorar = () => {
   const [locaisCurtidos, setLocaisCurtidos] = useState([]);
   const navigate = useNavigate();
   const [primeiroNome, setPrimeiroNome] = useState('');
+ 
 
   useEffect(() => {
     const dados = JSON.parse(localStorage.getItem('usuario'));

@@ -35,3 +35,31 @@
     padding-bottom: 1em;
   }
 }
+
+.mapa-locais-filtros {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  background-color: var(--corAzulRoyal);
+  border-radius: 8px;
+  padding-left: 5px;
+  color: white;
+
+  & select {
+    background-color: var(--corAzulRoyal);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    font-size: small;
+
+    
+  }
+}

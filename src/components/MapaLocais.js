@@ -79,15 +79,30 @@ const MapaLocais = () => {
   const [locais, setLocais] = useState([]);
   const { state } = useLocation();
 
+  const [todosLocais, setTodosLocais] = useState([]);
+  const [filtros, setFiltros] = useState([]);
+
   const [primeiroNome, setPrimeiroNome] = useState('');
-  
-    useEffect(() => {
-      const dados = JSON.parse(localStorage.getItem('usuario'));
-      if (dados?.nome) {
-        const nomeSeparado = dados.nome.split(' ')[0];
-        setPrimeiroNome(nomeSeparado);
-      }
-    }, []);
+
+
+  const aplicarFiltro = (filtro) => {
+    if (filtro === 'todos') {
+      setLocais(todosLocais);
+      return;
+    }
+
+    const locaisFiltrados = todosLocais.filter((local) =>
+      (local.tipo || []).includes(filtro)
+    );
+    setLocais(locaisFiltrados);
+  };
+  useEffect(() => {
+    const dados = JSON.parse(localStorage.getItem('usuario'));
+    if (dados?.nome) {
+      const nomeSeparado = dados.nome.split(' ')[0];
+      setPrimeiroNome(nomeSeparado);
+    }
+  }, []);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -105,13 +120,30 @@ const MapaLocais = () => {
   useEffect(() => {
     if (state?.locais?.length > 0) {
       setLocais(state.locais);
+      setTodosLocais(state.locais);
     } else {
       fetch('https://marago-backend.vercel.app/pontos/?limit=10')
         .then((res) => res.json())
-        .then((data) => setLocais(data))
-        .catch((err) => console.error('Erro ao buscar locais do banco:', err));
+        .then((data) => {
+          setLocais(data);
+          setTodosLocais(data);
+        })
+        .catch((err) => console.error('Erro ao buscar locais:', err));
     }
   }, [state]);
+
+  useEffect(() => {
+    if (todosLocais.length > 0) {
+      const tiposUnicos = Array.from(
+        new Set(
+          todosLocais
+            .flatMap((local) => local.tipo || [])
+            .filter(Boolean)
+        )
+      );
+      setFiltros(tiposUnicos);
+    }
+  }, [todosLocais]);
 
   useEffect(() => {
     if (posicaoUsuario && locais.length > 0) {
@@ -156,11 +188,11 @@ const MapaLocais = () => {
   const distanciaKm =
     localSelecionado && posicaoUsuario
       ? calcularDistanciaKm(
-          posicaoUsuario.lat,
-          posicaoUsuario.lng,
-          localSelecionado.coordenadas.latitude,
-          localSelecionado.coordenadas.longitude
-        ).toFixed(2)
+        posicaoUsuario.lat,
+        posicaoUsuario.lng,
+        localSelecionado.coordenadas.latitude,
+        localSelecionado.coordenadas.longitude
+      ).toFixed(2)
       : null;
 
   const urlGoogleMaps =
@@ -168,12 +200,25 @@ const MapaLocais = () => {
       ? `https://www.google.com/maps/dir/?api=1&origin=${posicaoUsuario.lat},${posicaoUsuario.lng}&destination=${localSelecionado.coordenadas.latitude},${localSelecionado.coordenadas.longitude}`
       : null;
 
+
+
   return (
     <div className="mapa-locais-container">
       <Header />
       <div className='mapa-locais-header'>
-        
+
         <h1>Opa, {primeiroNome}! Esses são os principais rolês que deram match com você. Que tal explorar as possibilidades de rolê? Tem muita coisa boa pra fazer...</h1>
+      </div>
+      <div className='mapa-locais-filtros'>
+        <label htmlFor="filtro">Filtros:</label>
+        <select id="filtro" onChange={(e) => aplicarFiltro(e.target.value)}>
+          <option value="todos">todos</option>
+          {filtros.map((filtro) => (
+            <option key={filtro} value={filtro}>
+              {filtro}
+            </option>
+          ))}
+        </select>
       </div>
       <MapContainer
         center={[posicaoUsuario?.lat || 0, posicaoUsuario?.lng || 0]}
@@ -208,7 +253,7 @@ const MapaLocais = () => {
                   }
                 }}
               >
-                
+
               </Marker>
             );
           })}

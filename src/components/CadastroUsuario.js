@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import '../assets/styles/cadastro-usuario.css';
 import Logo from '../assets/images/logo-marago-branco.jpg';
 import GoogleLogo from '../assets/images/google-logo.svg';
+import { redirect } from 'react-router-dom';
 
 const CadastroUsuario = () => {
     const [listaDePaises, setListaDePaises] = useState([]);
@@ -106,6 +107,7 @@ const CadastroUsuario = () => {
             if (response.ok) {
 
                 alert('Usuário cadastrado com sucesso!');
+                redirect('/login');
 
                 setFormData({
                     nome: '',
@@ -121,12 +123,14 @@ const CadastroUsuario = () => {
             } else {
                 alert(`Erro: ${data.erro}`);
                 
+                
             }
         } catch (error) {
             console.error('Erro ao cadastrar usuário:', error);
             alert('Erro de conexão com o servidor.');
         } finally {
             setIsLoading(false);
+
         }
     };
 
