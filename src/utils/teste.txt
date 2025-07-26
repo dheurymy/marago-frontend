@@ -1,5 +1,3 @@
-
-
 import '../assets/styles/home.css';
 import Logo from '../assets/images/logo-marago-branco.jpg';
 import ExplorarIcon from '../assets/images/explorar-icon.svg';
@@ -8,13 +6,31 @@ import RotaIcon from '../assets/images/rota-icon.svg';
 import BadgeIcon from '../assets/images/badge-icon.svg';
 import CodigoMALogo from '../assets/images/codigoma-logo.svg';
 import { useState } from 'react';
-import CardsFuncionalidade from './CardFuncionalidade';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import '../assets/styles/card-local.css';
+import CardDeslizavel from '../components/CardDeslizavel';
+
 const LandingPage = () => {
   const [menuAberto, setMenuAberto] = useState(false);
 
   const toggleMenu = () => {
     setMenuAberto(prev => !prev);
   };
+
+  // Defina o objeto localExemplo fora do JSX
+  const localExemplo = {
+    nome: 'Praia Bonita',
+    cidade: 'Rio de Janeiro',
+    estado: 'RJ',
+    descricao: 'Um lugar lindo para visitar.',
+    imagens: [''], // substitua por uma imagem real
+  };
+
+  // Função chamada no swipe
+  const onSwipeHandler = (direcao) => {
+    console.log('Swipe para:', direcao);
+  };
+
   return (
     <div className="landing-page">
       <div className='header'>
@@ -41,7 +57,7 @@ const LandingPage = () => {
         {menuAberto && (
           <div className='menu'>
             <ul>
-
+              {/* Seus itens de menu aqui */}
             </ul>
           </div>
         )}
@@ -56,18 +72,21 @@ const LandingPage = () => {
         <p>Com o MaraGO você encontra rolês incríveis perto de você. Explore as opções disponíveis, escolha os que dão match com você, tenha um mapa personalizado com seus rolês favoritos, ganhe insignias por conhecer novos lugares, compartilhe suas experiências e conecte-se com outros usuários!</p>
         <button onClick={() => window.location.href = '/cadastro'}>Cadastre-se</button>
       </main>
+
       <section className='cards-funcionalidades'>
         <h2>Conheça tudo que o MaraGO tem a oferecer:</h2>
+
         <div className='card'>
           <div className='card-title'>
             <img src={ExplorarIcon} alt="Ícone Explorar" />
             <h2>Explorar</h2>
           </div>
-          <CardsFuncionalidade />
           <div className='card-content'>
-            <p>Descubra novos rolês com a facilidade de um deslizar.</p>
+            {/* Aqui você insere o CardDeslizavel */}
+            <CardDeslizavel local={localExemplo} onSwipe={onSwipeHandler} animarInicio={true} />
           </div>
         </div>
+
         <div className='card'>
           <div className='card-title'>
             <img src={MapaIcon} alt="Ícone Mapa" />
@@ -77,6 +96,7 @@ const LandingPage = () => {
             <p>Visualize todos os seus rolês favoritos em um mapa interativo. Encontre o que mais combina com você! Escolha o rolê e divirta-se.</p>
           </div>
         </div>
+
         <div className='card'>
           <div className='card-title'>
             <img src={RotaIcon} alt="Ícone Rota" />
@@ -86,6 +106,7 @@ const LandingPage = () => {
             <p>Crie rotas personalizadas com seus lugares favoritos. Veja qual o mais perto de você, veja detalhes dos rolês. Organize seus rolês de forma prática e divertida!</p>
           </div>
         </div>
+
         <div className='card'>
           <div className='card-title'>
             <img src={BadgeIcon} alt="Ícone Insígnia" />
@@ -100,7 +121,7 @@ const LandingPage = () => {
       <footer className='footer'>
         <p>© 2025 MaraGO. Todos os direitos reservados.</p>
         <p>Desenvolvido por <a href="/">
-        <img src={CodigoMALogo} alt="CódigoMA Logo" className='codigoma-logo' />
+          <img src={CodigoMALogo} alt="CódigoMA Logo" className='codigoma-logo' />
         </a></p>
       </footer>
     </div>

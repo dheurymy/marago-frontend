@@ -253,7 +253,7 @@
 
         font-weight: 450;
 
-        padding-bottom: 1em;
+        padding-bottom: 2em;
 
     }
 
@@ -342,7 +342,7 @@
             font-family: var(--font-family-poppins);
             font-size: 0.8em;
             color: var(--corPreto);
-            text-align: justify;
+            text-align: center;
 
             line-height: 1.15;
 
