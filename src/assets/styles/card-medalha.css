@@ -1,0 +1,52 @@
+.card-medalha-container {
+    width: 310px;
+    
+    height: 140px;
+
+    border: 1px solid #FFD700;
+    border-radius: 3px;
+    background-color: rgb(168, 245, 219);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+}
+
+.local-medalha {
+    width: 96px;
+    height: 128px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--corBrancoFosco);
+    border-radius: 8px;
+}
+
+
+.medalha-item {
+   border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.8s ease, transform 0.4s ease;
+}
+
+.medalha-item.colar-animacao {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 0 12px #FFD700;
+}
+
+.medalha-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #FFD700;
+
+}
+

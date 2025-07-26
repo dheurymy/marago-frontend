@@ -292,8 +292,9 @@
         font-family: var(--font-family-fredoka);
         font-size: 1rem;
         color: var(--corPreto);
-        
+
     }
+
 
     & .card {
 
@@ -302,6 +303,9 @@
         height: auto;
         border: 1px solid var(--corAzulRoyal);
         border-radius: 8px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
 
         & .card-title {
             display: flex;
@@ -346,51 +350,77 @@
 
             line-height: 1.15;
 
-        }
-    }
-
-   
-}
-
- .footer {
-        width: 100%;
-        max-width: 460px;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        margin-top: 1em;
-
-        font-family: var(--font-family-poppins);
-        font-size: 0.8rem;
-        color: var(--corPreto);
-
-        & p {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
 
-            gap: 1em;
+            gap: 2em;
+            font-size: 1.2rem;
 
-            text-align: center;
 
-            & a {
-                color: var(--corAzulRoyal);
-                text-decoration: none;
-                font-weight: 500;
+            & button {
+                padding: 5px 8px;
+                background-color: var(--corAzulRoyal);
+                color: var(--corBranco);
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                
-                & img {
+                font-family: var(--font-family-fredoka);
+                font-size: 24px;
+
+                transition: background-color 0.3s ease;
+
+
+
+            }
+
+        }
+    }
+
+
+}
+
+.footer {
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 1em;
+
+    font-family: var(--font-family-poppins);
+    font-size: 0.8rem;
+    color: var(--corPreto);
+
+    & p {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        gap: 1em;
+
+        text-align: center;
+
+        & a {
+            color: var(--corAzulRoyal);
+            text-decoration: none;
+            font-weight: 500;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & img {
                 width: 60px;
                 height: 20px;
-                
-                }
+
             }
         }
     }
+}

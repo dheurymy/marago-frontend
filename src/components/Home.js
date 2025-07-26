@@ -9,6 +9,7 @@ import BadgeIcon from '../assets/images/badge-icon.svg';
 import CodigoMALogo from '../assets/images/codigoma-logo.svg';
 import { useState } from 'react';
 import CardsFuncionalidade from './CardFuncionalidade';
+import CardMedalha from './CardMedalha';
 const LandingPage = () => {
   const [menuAberto, setMenuAberto] = useState(false);
 
@@ -49,12 +50,13 @@ const LandingPage = () => {
 
       <main className='main-content'>
         <h1>
+          
           <span className='linha1'>O que você</span>
           <span className='linha2'>quer <strong>fazer</strong></span>
           <span className='linha3'>hoje?</span>
         </h1>
-        <p>Com o MaraGO você encontra rolês incríveis perto de você. Explore as opções disponíveis, escolha os que dão match com você, tenha um mapa personalizado com seus rolês favoritos, ganhe insignias por conhecer novos lugares, compartilhe suas experiências e conecte-se com outros usuários!</p>
-        <button onClick={() => window.location.href = '/cadastro'}>Cadastre-se</button>
+        
+        
       </main>
       <section className='cards-funcionalidades'>
         <h2>Conheça tudo que o MaraGO tem a oferecer:</h2>
@@ -66,17 +68,10 @@ const LandingPage = () => {
           <CardsFuncionalidade />
           <div className='card-content'>
             <p>Descubra novos rolês com a facilidade de um deslizar.</p>
+            <button onClick={() => window.location.href = '/cadastro'}>Experimentar</button>
           </div>
         </div>
-        <div className='card'>
-          <div className='card-title'>
-            <img src={MapaIcon} alt="Ícone Mapa" />
-            <h2>Mapa</h2>
-          </div>
-          <div className='card-content'>
-            <p>Visualize todos os seus rolês favoritos em um mapa interativo. Encontre o que mais combina com você! Escolha o rolê e divirta-se.</p>
-          </div>
-        </div>
+        
         <div className='card'>
           <div className='card-title'>
             <img src={RotaIcon} alt="Ícone Rota" />
@@ -91,8 +86,10 @@ const LandingPage = () => {
             <img src={BadgeIcon} alt="Ícone Insígnia" />
             <h2>Medalhas</h2>
           </div>
+          <CardMedalha />
+
           <div className='card-content'>
-            <p>Ganhe medalhas por explorar, conhecer novos lugares e completar desafios. Consiga todas as medalhas e complete os álbuns de figurinhas. Mostre suas conquistas para a comunidade!</p>
+            <p>Ganhe medalhas por explorar, conhecer novos lugares e completar desafios. </p>
           </div>
         </div>
       </section>
